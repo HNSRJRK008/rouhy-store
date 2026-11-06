@@ -413,12 +413,15 @@
       <p class="eyebrow">Quelques mots précieux</p>
       <h2 id="newsletter-title">Une jolie nouvelle, de temps en temps.</h2>
       <p>Inscrivez-vous pour découvrir nos nouveautés et nos inspirations.</p>
-      <form class="newsletter-form">
+      <form class="newsletter-form" action="https://formsubmit.co/yasserhafid21@gmail.com" method="POST">
+        <input type="hidden" name="_subject" value="Nouvelle inscription newsletter ROUHY Store">
+        <input type="hidden" name="_next" value="https://hnsrjrk008.github.io/rouhy-store/?newsletter=success#newsletter">
         <label class="sr-only" for="email">Votre adresse e-mail</label>
         <input id="email" name="email" type="email" placeholder="Votre adresse e-mail" required>
         <button type="submit">S’inscrire&nbsp; →</button>
       </form>
       <p class="form-message" id="form-message" aria-live="polite"></p>
+      <p class="form-note">Votre adresse sera envoyée par e-mail à ROUHY Store pour traiter votre inscription.</p>
     </section>
   </main>
 
@@ -453,11 +456,9 @@
         : "Votre panier est vide.";
     });
 
-    document.querySelector(".newsletter-form").addEventListener("submit", (event) => {
-      event.preventDefault();
-      document.querySelector("#form-message").textContent = "Merci ! Le formulaire est une maquette : aucune inscription n’a été envoyée.";
-      event.currentTarget.reset();
-    });
+    if (new URLSearchParams(window.location.search).get("newsletter") === "success") {
+      document.querySelector("#form-message").textContent = "Merci ! Votre demande d’inscription a bien été envoyée.";
+    }
 
     document.querySelector("#year").textContent = new Date().getFullYear();
   </script>
